@@ -1,0 +1,8 @@
+{
+  "name": "TemplateApp",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "bower": "^1.6.4"
+  }
+}
