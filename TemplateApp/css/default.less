@@ -1,2 +1,28 @@
-﻿body {
+﻿body > .split-view {
+    /* SplitView pane content style*/
+    .win-splitview-pane {
+        .header {
+            display: flex;
+            align-items: center;
+            .win-splitviewpanetoggle {
+                flex: 0 0 auto;
+            }
+            .title {
+                flex: 1 1 0%;
+                font-size: 25px;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    /* SplitView content style*/
+    .win-splitview-content {
+        background-color: rgb(112,112,112);
+
+        .contenttext {
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+    }
 }

@@ -14,7 +14,10 @@
                 // TODO: This application was suspended and then terminated.
                 // To create a smooth user experience, restore application state here so that it looks like the app never stopped running.
             }
-            args.setPromise(WinJS.UI.processAll());
+            args.setPromise(WinJS.UI.processAll().then(() => {
+                var splitView = document.querySelector(".split-view").winControl;
+                new (<any> WinJS.UI)._WinKeyboard(splitView.paneElement); // Temporary workaround: Draw keyboard focus visuals on NavBarCommands
+            }));
         }
     };
 
