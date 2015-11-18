@@ -12,5 +12,14 @@
       "include": true
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "winjs/winjs.d.ts": {
+      "repo": "git@github.com:nobuoka/winjs.git",
+      "ref": "0540950eff991ad92efb38901195a5d053023a79",
+      "path": "typings/winjs/winjs.d.ts"
+    },
+    "winrt/winrt.d.ts": {
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    }
+  }
 }

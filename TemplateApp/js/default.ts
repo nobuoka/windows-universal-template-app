@@ -1,8 +1,4 @@
-﻿// For an introduction to the Blank template, see the following documentation:
-// http://go.microsoft.com/fwlink/?LinkId=232509
-
-declare var WinJS: any;
-declare var Windows: any;
+﻿/// <reference path="..\typings\bundle.d.ts" />
 
 (function () {
     "use strict";
