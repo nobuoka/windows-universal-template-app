@@ -1,12 +1,17 @@
 ﻿/// <reference path="..\typings\bundle.d.ts" />
 
+type IActivatedEventArgs = Windows.ApplicationModel.Activation.IActivatedEventArgs;
+interface IDetailedPromiseEvnet<T> extends WinJS.Application.IPromiseEvent {
+    detail: T;
+}
+
 (function () {
     "use strict";
 
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
 
-    app.onactivated = function (args) {
+    app.onactivated = function (args: IDetailedPromiseEvnet<IActivatedEventArgs>) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize your application here.
