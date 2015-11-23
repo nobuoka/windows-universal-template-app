@@ -60,6 +60,11 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="pages\home\home.html" />
+    <Content Include="pages\home\home.less" />
+    <Content Include="pages\setting\setting.html" />
+    <Content Include="pages\setting\setting.less" />
+    <Content Include="pages\_common\pages.less" />
     <None Include=".bin\node.cmd" />
     <None Include=".bin\git.cmd" />
     <None Include=".bin\npm.cmd" />
@@ -86,6 +91,9 @@
     <TypeScriptCompile Include="js\default.ts" />
     <Content Include="package.json" />
     <Content Include="packages.config" />
+    <TypeScriptCompile Include="js\PageControlContainer.ts" />
+    <TypeScriptCompile Include="pages\home\home.ts" />
+    <TypeScriptCompile Include="pages\setting\setting.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4a0dddb5-7a95-4fbf-97cc-616d07737a77}" />
@@ -123,6 +131,7 @@
   <Target Name="CssFiles" AfterTargets="WebCompile">
     <ItemGroup>
       <Content Include="css\**\*.css" />
+      <Content Include="pages\**\*.css" />
     </ItemGroup>
   </Target>
 </Project>

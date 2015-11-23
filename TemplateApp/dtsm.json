@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "winjs/winjs.d.ts": {
-      "repo": "git@github.com:nobuoka/winjs.git",
-      "ref": "0540950eff991ad92efb38901195a5d053023a79",
+      "repo": "https://github.com/nobuoka/winjs.git",
+      "ref": "7b70573272f4da487f4ed5501a461fcca32e048d",
       "path": "typings/winjs/winjs.d.ts"
     },
     "winrt/winrt.d.ts": {

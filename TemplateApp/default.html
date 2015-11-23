@@ -12,6 +12,7 @@
     <!-- TemplateApp references -->
     <link href="/css/default.css" rel="stylesheet" />
     <script src="/js/default.js"></script>
+    <script src="/js/PageControlContainer.js"></script>
 </head>
 <body class="win-type-body">
     <div class="split-view" data-win-control="WinJS.UI.SplitView">
@@ -25,15 +26,13 @@
                 <div class="title">SplitView Pane area</div>
             </div>
             <div class="nav-commands">
-                <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Home', icon: 'home'}"></div>
-                <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Favorite', icon: 'favorite'}"></div>
-                <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Settings', icon: 'settings'}"></div>
+                <!-- Commands will be appended by JS. -->
             </div>
         </div>
         <!-- </div> -->
         <!-- Content area -->
         <!-- <div class="win-splitview-contentwrapper"><div class="win-splitview-content"> -->
-        <div class="contenttext"><h2 class="win-h2">SplitView Content area</h2> </div>
+        <div class="page-container" data-win-control="vc.PageControlContainer"></div>
         <!-- </div></div> -->
     </div>
 </body>

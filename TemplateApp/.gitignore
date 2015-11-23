@@ -1,6 +1,10 @@
-/css/**/*.css
-/js/**/*.js
-/js/**/*.js.map
 /node_modules/
 /bower_components/
 /typings/
+
+/css/**/*.css
+/js/**/*.js
+/js/**/*.js.map
+/pages/**/*.css
+/pages/**/*.js
+/pages/**/*.js.map

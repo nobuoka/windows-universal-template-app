@@ -1,7 +1,10 @@
 ﻿/// <reference path="..\typings\bundle.d.ts" />
 
 type IActivatedEventArgs = Windows.ApplicationModel.Activation.IActivatedEventArgs;
-interface IDetailedPromiseEvnet<T> extends WinJS.Application.IPromiseEvent {
+interface IDetailedEvnet<T> extends CustomEvent {
+    detail: T;
+}
+interface IDetailedPromiseEvnet<T> extends WinJS.Application.IPromiseEvent, IDetailedEvnet<T> {
     detail: T;
 }
 
@@ -21,7 +24,28 @@ interface IDetailedPromiseEvnet<T> extends WinJS.Application.IPromiseEvent {
             }
             args.setPromise(WinJS.UI.processAll().then(() => {
                 var splitView = document.querySelector(".split-view").winControl;
-                new (<any> WinJS.UI)._WinKeyboard(splitView.paneElement); // Temporary workaround: Draw keyboard focus visuals on NavBarCommands
+                new (<any>WinJS.UI)._WinKeyboard(splitView.paneElement); // Temporary workaround: Draw keyboard focus visuals on NavBarCommands
+                var splitViewCommandsContainer = <HTMLDivElement>document.querySelector(".nav-commands");
+                [
+                    { label: 'Home', icon: 'home', oninvoked: (args) => { WinJS.Navigation.navigate("/pages/home/home.html") } },
+                    { label: 'Favorite', icon: 'favorite' },
+                    { label: 'Settings', icon: 'settings', oninvoked: (args) => { WinJS.Navigation.navigate("/pages/setting/setting.html") } },
+                ].forEach((opt) => {
+                    splitViewCommandsContainer.appendChild(new WinJS.UI.SplitViewCommand(null, opt).element);
+                });
+
+                var pageContainer = <vc.PageControlContainer>document.querySelector(".page-container").winControl;
+                pageContainer.setPage("/pages/home/home.html");
+
+                WinJS.Navigation.onnavigating = (args: IDetailedEvnet<{
+                    location: string; // The URI to navigate to.
+                    state: {}; // One or more user- defined key- value pairs.
+                    delta: number; // The number of pages traversed forward or backward in the navigation stack.This value is typically + 1, -1, or the value of distance specified in back or forward.
+                    setPromise(p: WinJS.IPromise<any>): void;
+                }>) => {
+                    //args.detail.location, newElement, args.detail.state
+                    args.detail.setPromise(pageContainer.setPage(args.detail.location, args.detail.state));
+                };
             }));
         }
     };

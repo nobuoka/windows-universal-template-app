@@ -2,5 +2,13 @@
   {
     "outputFile": "css/default.css",
     "inputFile": "css/default.less"
+  },
+  {
+    "outputFile": "pages/home/home.css",
+    "inputFile": "pages/home/home.less"
+  },
+  {
+    "outputFile": "pages/setting/setting.css",
+    "inputFile": "pages/setting/setting.less"
   }
 ]
