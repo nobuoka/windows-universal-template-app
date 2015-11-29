@@ -1,6 +1,7 @@
 {
   "name": "TemplateApp",
   "dependencies": {
-    "winjs": "~4.4.0"
+    "winjs": "~4.4.0",
+    "winrsjs": "~0.1.0"
   }
 }

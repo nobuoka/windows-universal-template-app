@@ -20,6 +20,10 @@
     },
     "winrt/winrt.d.ts": {
       "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
+    "winrt/winrt-http.d.ts": {
+      "repo": "https://github.com/nobuoka/DefinitelyTyped.git",
+      "ref": "3597752f498bedaf63f90c528fdf3cdef0dbd63a"
     }
   }
 }
