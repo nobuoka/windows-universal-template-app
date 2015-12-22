@@ -69,12 +69,9 @@
     <Content Include="pages\_common\pages.less" />
     <Content Include=".gitignore" />
     <Content Include="bower.json" />
-    <Content Include="bower_components\winjs\css\ui-dark.css" />
-    <Content Include="bower_components\winjs\css\ui-light.css" />
-    <Content Include="bower_components\winjs\fonts\Symbols.ttf" />
-    <Content Include="bower_components\winjs\js\base.js" />
-    <Content Include="bower_components\winjs\js\en-US\ui.strings.js" />
-    <Content Include="bower_components\winjs\js\ui.js" />
+    <Content Include="bower_components\winjs\css\*.css" Exclude="bower_components\winjs\css\*.min.css" />
+    <Content Include="bower_components\winjs\fonts\*.ttf" />
+    <Content Include="bower_components\winjs\js\**\*.js" Exclude="bower_components\winjs\js\**\*.min.js;bower_components\winjs\js\**\*.intellisense.js;;bower_components\winjs\js\**\*.intellisense-setup.js" />
     <Content Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults" />
     <Content Include="css\default.less" />
