@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.props" Condition="Exists('..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.props')" />
+  <Import Project="..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.props" Condition="Exists('..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
@@ -65,9 +67,6 @@
     <Content Include="pages\setting\setting.html" />
     <Content Include="pages\setting\setting.less" />
     <Content Include="pages\_common\pages.less" />
-    <None Include=".bin\node.cmd" />
-    <None Include=".bin\git.cmd" />
-    <None Include=".bin\npm.cmd" />
     <Content Include=".gitignore" />
     <Content Include="bower.json" />
     <Content Include="bower_components\winjs\css\ui-dark.css" />
@@ -107,25 +106,18 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets')" />
-  <Target Name="BeforeBuild" DependsOnTargets="NpmInstall;BowerInstall;DtsmInstall;" />
-  <Target Name="AfterBuild" DependsOnTargets="NpmShrinkwrap" />
+  <Target Name="BeforeBuild" DependsOnTargets="BowerInstall;DtsmInstall" />
+  <Target Name="AfterBuild" />
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
-  <!-- npm commands -->
-  <Target Name="NpmInstall">
-    <Exec Command=".bin\npm install" />
-  </Target>
-  <Target Name="NpmShrinkwrap">
-    <Exec Command=".bin\npm shrinkwrap" />
-  </Target>
   <!-- bower install -->
   <Target Name="BowerInstall" DependsOnTargets="NpmInstall">
-    <Exec Command="node_modules\.bin\bower.cmd install" />
+    <Exec Command="$(NodeCommandWithNodePathSetting) node_modules\bower\bin\bower install" />
   </Target>
   <!-- dtsm install -->
   <Target Name="DtsmInstall" DependsOnTargets="NpmInstall">
-    <Exec Command="node_modules\.bin\dtsm.cmd install" />
+    <Exec Command="$(NodeCommandWithNodePathSetting) node_modules\dtsm\bin\dtsm install" />
   </Target>
   <Import Project="..\packages\BuildWebCompiler.1.8.277\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.8.277\build\BuildWebCompiler.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -133,6 +125,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\BuildWebCompiler.1.8.277\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.8.277\build\BuildWebCompiler.targets'))" />
+    <Error Condition="!Exists('..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.props'))" />
+    <Error Condition="!Exists('..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.targets'))" />
   </Target>
   <Target Name="CssFiles" AfterTargets="WebCompile">
     <ItemGroup>
@@ -140,4 +136,6 @@
       <Content Include="pages\**\*.css" />
     </ItemGroup>
   </Target>
+  <Import Project="..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.targets" Condition="Exists('..\packages\Node.MSBuild.1.0.2\build\Node.MSBuild.targets')" />
+  <Import Project="..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.targets" Condition="Exists('..\packages\Node.MSBuild.Npm.1.0.0\build\Node.MSBuild.Npm.targets')" />
 </Project>
